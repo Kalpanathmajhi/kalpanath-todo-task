@@ -1,4 +1,3 @@
-// AddTask.js
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/Task/taskSlice.js";
@@ -34,15 +33,15 @@ function InputTask() {
       <button
         className="py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
-        transition-colors bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
+        transition-colors bg-gradient-to-tr from-teal-500 to-teal-400 text-white shadow-md hover:opacity-90"
         onClick={() => setShowModal(true)}
       >
         + Add Task
       </button>
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-md">
-            <h2 className="text-xl font-bold mb-4">Add Task</h2>
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-60 z-50">
+          <div className="bg-gray-900 p-6 rounded-lg shadow-lg w-96">
+            <h2 className="text-xl font-bold mb-4 text-white">Add Task</h2>
             <input
               type="text"
               placeholder="Title"
@@ -50,17 +49,17 @@ function InputTask() {
               onChange={(e) =>
                 setNewTask({ ...newTask, title: e.target.value })
               }
-              className="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
+              className="border border-gray-600 bg-gray-800 text-white rounded-md px-2 py-1 mb-2 w-full focus:ring-teal-400"
             />
             <textarea
               cols="10"
-              rows="5"
+              rows="4"
               value={newTask.description}
               placeholder="Description"
               onChange={(e) =>
                 setNewTask({ ...newTask, description: e.target.value })
               }
-              className="border border-gray-300 rounded-md px-2 py-1 mb-[3px] w-full"
+              className="border border-gray-600 bg-gray-800 text-white rounded-md px-2 py-1 mb-2 w-full focus:ring-teal-400"
             ></textarea>
             <input
               type="date"
@@ -69,9 +68,9 @@ function InputTask() {
               onChange={(e) =>
                 setNewTask({ ...newTask, deadline: e.target.value })
               }
-              className="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
+              className="border border-gray-600 bg-gray-800 text-white rounded-md px-2 py-1 mb-2 w-full focus:ring-teal-400"
             />
-            <div className="mb-2">
+            <div className="mb-2 flex items-center">
               <input
                 type="checkbox"
                 checked={newTask.completed}
@@ -81,11 +80,11 @@ function InputTask() {
                     completed: e.target.checked,
                   })
                 }
-                className="mr-2"
+                className="mr-2 accent-teal-400"
               />
-              <span>Completed</span>
+              <span className="text-white">Completed</span>
             </div>
-            <div className="mb-4">
+            <div className="mb-4 flex items-center">
               <input
                 type="checkbox"
                 checked={newTask.important}
@@ -95,19 +94,19 @@ function InputTask() {
                     important: e.target.checked,
                   })
                 }
-                className="mr-2"
+                className="mr-2 accent-teal-400"
               />
-              <span>Important</span>
+              <span className="text-white">Important</span>
             </div>
             <div className="flex justify-end">
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+                className="bg-teal-500 text-white px-4 py-2 rounded-md mr-2 shadow-md hover:bg-teal-600"
                 onClick={handleSaveTask}
               >
                 Save Task
               </button>
               <button
-                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
+                className="bg-gray-700 text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-600"
                 onClick={() => setShowModal(false)}
               >
                 Cancel
