@@ -6,11 +6,14 @@ export default function Sidebar({ children }) {
 
   return (
     <aside className="h-screen w-full">
-      <nav className="h-full flex-col bg-white border-r shadow-sm">
-        <div className="flex items-center gap-1 p-3" onClick={()=>navigate("/")}>
-          <BookCheck size={30} />
-          <span className="ml-4 font-semibold text-gray-700 text-xl">
-            Prod Tasks
+      <nav className="h-full flex-col bg-gray-900 border-r shadow-sm">
+        <div
+          className="flex items-center gap-1 p-3 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          <BookCheck size={30} className="text-teal-400" />
+          <span className="ml-4 font-semibold text-white text-xl">
+            Todo Task
           </span>
         </div>
 
@@ -19,15 +22,15 @@ export default function Sidebar({ children }) {
     </aside>
   );
 }
+
 const checkPath = (path) => {
-  // console.log(location.pathname, path);
-  if (path === location.pathname) return true;
-  else return false;
+  return path === location.pathname;
 };
 
 export function SidebarItem({ icon, text, active, path }) {
   active = checkPath(path);
   const navigate = useNavigate();
+  
   return (
     <li
       className={`
@@ -36,8 +39,8 @@ export function SidebarItem({ icon, text, active, path }) {
         transition-colors group
         ${
           active
-            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : "hover:bg-indigo-50 text-gray-600"
+            ? "bg-gradient-to-tr from-teal-500 to-teal-400 text-white"
+            : "hover:bg-teal-700 text-gray-300"
         }
     `}
       onClick={() => navigate(path)}
